@@ -39,8 +39,8 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async(request, r
     switch (event.type) {
         case 'payment_intent.succeeded':
             const paymentIntentSucceeded = event.data.object;
-            const order = await Order.findById(paymentIntentSucceeded.metadata.order_id)
-            order.paymentStatus('recieved')
+            const order = await Order.findById(paymentIntentSucceeded.metadata.orderId)
+            order.paymentStatus = "recieved"
             await order.save()
             
             break;

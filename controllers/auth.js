@@ -1,3 +1,4 @@
+const path = require('path')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
@@ -22,7 +23,10 @@ const userLogin = async(req, res) => {
         }
         if(user.password === password){
             const token = jwt.sign({id: user.id}, process.env.JWT_SECRET_KEY)
-            res.cookie('token',token, {httpOnly: true})
+            res.cookie('token',token, {
+                httpOnly: true,
+                expires: new Date(Date.now() + 3600000)
+            })
             return res.status(200).json({id: user.id, role: user.role})
         }
 
@@ -33,7 +37,22 @@ const userLogin = async(req, res) => {
     }
 }
 
+const logOut = async(req, res) => {
+    try {
+        res
+            .cookie('token', '', {
+                httpOnly: true,
+                expires: new Date(Date.now()),
+                ath: '/'
+            })
+            .sendStatus(200)
+    } catch (error) {
+        return res.status(400).send(error.message)
+    }
+}
+
 module.exports = {
     userSignUp,
-    userLogin
+    userLogin,
+    logOut
 }
