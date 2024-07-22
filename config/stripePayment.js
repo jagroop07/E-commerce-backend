@@ -11,7 +11,7 @@ const createPaymentIntent = async (req, res) => {
         enabled: true,
       },
       metadata: {
-        order_id: orderId
+        orderId
       }
     });
   
