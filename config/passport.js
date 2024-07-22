@@ -8,7 +8,7 @@ const cookieExtracter = req => {
         token = req.cookies['token']
     }
 
-    return token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTVlOGVhMzVkOWNjYzc4YmVhZDJkZCIsImlhdCI6MTcyMTM1NjAzN30.gB1rTZ8LXUUHS5-ZRDUw5QBgWbQ5ZvQTjWrujG702Yw"
+    return token
 }
 
 const opts = {}
