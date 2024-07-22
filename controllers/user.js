@@ -13,8 +13,8 @@ const fetchLoggedInUser = async(req, res) => {
 const updateUser = async(req,res) => {
     try {
         const id = req.user.id
-        ("this is id",req.body)
         const user = await User.findByIdAndUpdate(id, req.body, {new: true})
+        console.log(user)
         return res.status(200).send(user)
     } catch (error) {
         return res.status(400).send(error.message)
