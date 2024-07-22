@@ -64,7 +64,7 @@ app.use('/auth', authRouter)
 app.use('/users', passport.authenticate('jwt', { session: false }), userRouter)
 app.use('/cart', passport.authenticate('jwt', { session: false }), cartRouter)
 app.use('/order', passport.authenticate('jwt', { session: false }), orderRouter)
-app.use('/create-payment-intent', passport.authenticate('jwt', { session: false }), stripeRouter)
+app.use('/create-payment-intent', stripeRouter)
 
 //in case of routes doesnt match it will check in this file
 app.get('*', (req, res) =>
