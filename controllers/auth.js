@@ -6,7 +6,6 @@ const userSignUp = async(req, res) => {
         const user = new User(req.body)
         await user.save()
         return res.status(200).send("user registered successfully")
-        
     } catch (error) {
         return res.status(400).send(error.message)
     }
