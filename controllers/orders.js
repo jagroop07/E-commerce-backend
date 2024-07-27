@@ -29,6 +29,7 @@ const fetchAllOrders = async(req, res) => {
         let query = Order.find({})
         let itemQuery = Order.find({})
 
+        console.log(req.query)
         if(req.query._sort && req.query._order){
             query = query.sort({[req.query._sort]: +req.query._order})
         }
