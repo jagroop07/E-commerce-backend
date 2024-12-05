@@ -43,7 +43,7 @@ const logOut = async(req, res) => {
             .cookie('token', '', {
                 httpOnly: true,
                 expires: new Date(Date.now()),
-                ath: '/'
+                path: '/'
             })
             .sendStatus(200)
     } catch (error) {
